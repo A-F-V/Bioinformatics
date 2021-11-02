@@ -1,4 +1,4 @@
-def rosalind_solve(filei,filej,func):
+def rosalind_solve(filei="rosalind/io/i.txt",filej="rosalind/io/o.txt",func=(lambda x:x)):
     f = open(filei,"r")
     w1 = f.readline().rstrip('\n')
     w2 = f.readline().rstrip('\n')

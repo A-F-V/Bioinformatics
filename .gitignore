@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+rosalind/io/*
 # C extensions
 *.so
 

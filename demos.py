@@ -1,4 +1,5 @@
 from algorithms.four_russians_binary_encoding import LCS, Sequence,DNACode
+from rosalind.q7b import q7b
 ###########
 # Example #
 ###########
@@ -9,7 +10,16 @@ def FourRussianLCS():
     print(s1==s2)
     print(LCS(s1,s2))
 
+
+############
+# ROSALIND #
+############
+
+q7b()
+
 ##############
 # Playground #
 ##############
-FourRussianLCS()
+
+
+#FourRussianLCS()
