@@ -173,7 +173,6 @@ def LCS(s1,s2):
     return FourRussian_BE_Solve(s1,s2,0,LCSScorer)
     
 
-def EditDistance(s1,s2):
-    return FourRussian_BE_Solve(s1,s2,-1,EditDistanceScorer)
+#todo Four Russians for Edit Distance - requires making use in a smart way of binary encoding the negative edit distances.
 
 #todo modify Four Russiasn Table to use pointers generated in Needleman and hence find global alignment (instead of just edit distance)
