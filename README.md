@@ -15,7 +15,7 @@ This is a repository of all the algorithms covered in the **Bioinformatics Cours
 
 ### **Phylogeny (Evolutionary Tree) Algorithms**:
 - [x] [Limb Length](algorithms/limb_length.py) - O(n^2) and O(n) solutions
-- [ ] Additive Phylogeny
+- [x] [Additive Phylogeny](algorithms/additive_phylogeny.py)
 - [ ] UPGMA
 - [ ] Neighbour Joining
 
@@ -23,4 +23,4 @@ This is a repository of all the algorithms covered in the **Bioinformatics Cours
 - [Demos](demos.py) - **A list of functions that can be used to demo the algorithms**
 - [Scoring Functions](algorithms/scoring_functions.py) - Stores different scoring matrices encapsulated into a function to use in alignment problems
 - [Alignment-Graph](algorithms/alignment_graph.py)- A class for representing alignment/edit graphs
-- [Rosalind](rosalind) - Answers **[Rosalind](http://rosalind.info/problems/list-view/?location=bioinformatics-textbook-track) Questions**
+- [Rosalind](rosalind) - Answers to the **[Rosalind](http://rosalind.info/problems/list-view/?location=bioinformatics-textbook-track) Questions**
