@@ -1,7 +1,8 @@
 from algorithms.distance_matrix import DistanceMatrix
 from algorithms.limb_length import limb_length_n
 from algorithms.additive_phylogeny import additive_phylogeny
-def q7c():
+from algorithms.neighbour_joining import neighbour_joining
+def q7e():
     i = "rosalind/io/i.txt"
     o = "rosalind/io/o.txt"
     f = open(i,"r")
@@ -11,6 +12,6 @@ def q7c():
         mat.append(list(map(int,f.readline().strip().split())))
     d_mat = DistanceMatrix(mat,list(map(str,range(n))))
     f2 = open(o,"w+")
-    f2.writelines(str(additive_phylogeny(d_mat)))
+    f2.writelines(str(neighbour_joining(d_mat)))
     f.close()
     f2.close()

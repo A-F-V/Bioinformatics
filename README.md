@@ -17,7 +17,7 @@ This is a repository of all the algorithms covered in the **Bioinformatics Cours
 - [x] [Limb Length](algorithms/limb_length.py) - O(n^2) and O(n) solutions
 - [x] [Additive Phylogeny](algorithms/additive_phylogeny.py)
 - [x] [UPGMA](algorithms/upgma.py) - O(N^2 log(n)) solution using priority queue
-- [ ] Neighbour Joining
+- [x] [Neighbour Joining](algorithms/neighbour_joining.py)
 
 # Additional Files Explained:
 - [Demos](demos.py) - **A list of functions that can be used to demo the algorithms**
