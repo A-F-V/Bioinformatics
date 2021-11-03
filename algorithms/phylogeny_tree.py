@@ -15,6 +15,11 @@ class PTree:
         else:
             self.edges[node] = {}
 
+    def connect(self,a,b,weight):
+        if a in self.nodes and b in self.nodes:
+            self.edges[a][b] = weight
+            self.edges[b][a] = weight
+
     def is_neighbour(self,i,k):
         return k in self.edges[i]
 
@@ -59,3 +64,26 @@ class PTree:
 
     def __repr__(self):
         return self.__str__()
+
+class UPGMATree:
+    def __init__(self,leafs):
+        self.nodes = {leaf:0 for leaf in leafs}
+        self.edges = {leaf:{} for leaf in leafs}
+        self.degree = {leaf:1 for leaf in leafs}
+
+    def add_parent(self,a,b,parent,diameter_weight):
+        height = diameter_weight/2
+        self.degree[parent] = self.degree[a] + self.degree[b]
+        self.nodes[parent] = height
+        aheight,bheight = self.nodes[a],self.nodes[b]
+        self.edges[parent] = {a:height-aheight,b:height-bheight}
+        self.edges[a][parent] = height-aheight
+        self.edges[b][parent] = height-bheight
+
+    def __str__(self):
+        return "\n".join(flatten([[f"{i}->{j}:{weight}" for j,weight in self.edges[i].items()] for i in self.nodes]))
+
+    def __repr__(self):
+        return self.__str__()
+
+    

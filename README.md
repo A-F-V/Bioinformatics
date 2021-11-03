@@ -16,7 +16,7 @@ This is a repository of all the algorithms covered in the **Bioinformatics Cours
 ### **Phylogeny (Evolutionary Tree) Algorithms**:
 - [x] [Limb Length](algorithms/limb_length.py) - O(n^2) and O(n) solutions
 - [x] [Additive Phylogeny](algorithms/additive_phylogeny.py)
-- [ ] UPGMA
+- [x] [UPGMA](algorithms/upgma.py) - O(N^2 log(n)) solution using priority queue
 - [ ] Neighbour Joining
 
 # Additional Files Explained:

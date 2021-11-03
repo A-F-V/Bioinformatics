@@ -41,11 +41,12 @@ class DistanceMatrix: #lazy implementation, indexed via names
 
     def add(self,name,score): #as a dict from names to scores (not as a 2d list)
         self.names.append(name)
+        self.size +=1
         self.data[name] = score
         if self.with_ij_queue:
             for iname in self.names:
                 if iname !=name:
-                    heappush(self.smallest,(score,name,iname))
+                    heappush(self.smallest,(score[iname],name,iname))
 
 
     def smallest_ij(self): #maintains iname < jname
