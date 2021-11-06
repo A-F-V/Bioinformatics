@@ -1,4 +1,4 @@
-name: Run Python Tests
+name: Python Tests
 on:
   [push]
 
@@ -16,4 +16,4 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Run tests with pytest
-        run: pytest tests/
+        run: pytest bioinformatics/tests

@@ -1,7 +1,7 @@
 ![](logos/logo.png)
 
 [![CodeFactor](https://www.codefactor.io/repository/github/a-f-v/bioinformatics/badge)](https://www.codefactor.io/repository/github/a-f-v/bioinformatics)
-[![Run Python Tests](https://github.com/A-F-V/Bioinformatics/actions/workflows/actions.yml/badge.svg)](https://github.com/A-F-V/Bioinformatics/actions/workflows/actions.yml)
+[![Python Tests](https://github.com/A-F-V/Bioinformatics/actions/workflows/actions.yml/badge.svg)](https://github.com/A-F-V/Bioinformatics/actions/workflows/actions.yml)
 ![python](https://badges.aleen42.com/src/python.svg)
 ![ac_milan](https://badges.aleen42.com/src/ac_milan.svg)
 ---

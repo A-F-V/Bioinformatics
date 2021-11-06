@@ -1,6 +1,10 @@
-from re import M
-from matplotlib.cbook import flatten
+#import flatten
 
+def flatten_list(l):
+    """
+    Flatten a list of lists
+    """
+    return [item for sublist in l for item in sublist]
 
 class PTree:
     def __init__(self):
@@ -60,7 +64,7 @@ class PTree:
             return m
 
     def __str__(self):
-        return "\n".join(flatten([[f"{i}->{j}:{weight}" for j,weight in self.edges[i].items()] for i in self.nodes]))
+        return "\n".join(flatten_list([[f"{i}->{j}:{weight}" for j,weight in self.edges[i].items()] for i in self.nodes]))
 
     def __repr__(self):
         return self.__str__()
@@ -81,7 +85,7 @@ class UPGMATree:
         self.edges[b][parent] = height-bheight
 
     def __str__(self):
-        return "\n".join(flatten([[f"{i}->{j}:{weight}" for j,weight in self.edges[i].items()] for i in self.nodes]))
+        return "\n".join(flatten_list([[f"{i}->{j}:{weight}" for j,weight in self.edges[i].items()] for i in self.nodes]))
 
     def __repr__(self):
         return self.__str__()

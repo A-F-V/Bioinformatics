@@ -1,5 +1,5 @@
 from algorithms.four_russians_binary_encoding import LCS, Sequence,DNACode
-from rosalind.q7e import q7e
+from rosalind.q7f import q7f
 ###########
 # Example #
 ###########
@@ -15,7 +15,7 @@ def FourRussianLCS():
 # ROSALIND #
 ############
 
-q7e()
+q7f()
 
 ##############
 # Playground #
