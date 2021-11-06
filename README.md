@@ -1,4 +1,5 @@
 # Bioinformatics
+[![CodeFactor](https://www.codefactor.io/repository/github/a-f-v/bioinformatics/badge)](https://www.codefactor.io/repository/github/a-f-v/bioinformatics)
 
 This is a repository of all the algorithms covered in the **Bioinformatics Course** part of the **Cambridge Computer Science Tripos**
 
