@@ -43,7 +43,8 @@ For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Inde
 
 - [x] [K-mer Composition](bioinformatics/algorithms/string_composition.py)
 - [x] [Genome Reconstructing](bioinformatics/algorithms/reconstruct_genome_string.py) - reconstrucsts a genome from the genome path
-- [x] [Overlap Graph Problem](bioinformatics/algorithms/overlap_graph.py)
+- [x] [Overlap Graph Problem](bioinformatics/algorithms/sequencing_graph.py)
+- [x] [Debruijn Graph](bioinformatics/algorithms/sequencing_graph.py)
 
 # Additional Files Explained:
 

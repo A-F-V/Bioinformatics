@@ -20,12 +20,10 @@ class Overlap_Graph:
         return self.__str__()
     
 class DeBruijn_Graph:
-    def __init__(self, k,text):
-        raw_edges = [(text[i:i+k-1],text[i+1:i+k]) for i in range(len(text)-k+1)]
-        self.nodes = set([i for i,j in raw_edges])
-        self.edges = {i:[] for i in self.nodes}
-        for i,j in raw_edges:
-            self.edges[i].append(j)
+    def __init__(self, nodes,edges):
+        self.nodes = nodes
+        self.edges = edges
+        
         
     def __str__(self):
         output = ""
@@ -35,3 +33,20 @@ class DeBruijn_Graph:
     
     def __repr__(self):
         return self.__str__()
+    
+
+def text_to_debruijn(k,text):
+    raw_edges = [(text[i:i+k-1],text[i+1:i+k]) for i in range(len(text)-k+1)]
+    nodes = set([i for i,j in raw_edges])
+    edges = {i:[] for i in nodes}
+    for i,j in raw_edges:
+        edges[i].append(j)
+    return DeBruijn_Graph(nodes,edges)
+
+def kmers_to_debruijn(kmers):
+    raw_edges = [(prefix(mer),suffix(mer)) for mer in kmers]
+    nodes = set([i for i,j in raw_edges])
+    edges = {i:[] for i in nodes}
+    for i,j in raw_edges:
+        edges[i].append(j)
+    return DeBruijn_Graph(nodes,edges)
