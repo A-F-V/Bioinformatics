@@ -100,3 +100,5 @@ PAM250 = lambda x,y:PAM250_matrix[(x,y)]
 
 LCS = lambda x,y:1 if x==y else -(math.inf)
 EditDistance = lambda x,y: 0 if x==y else -1
+
+

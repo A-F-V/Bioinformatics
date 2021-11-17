@@ -8,16 +8,20 @@
 
 This is a repository of all the algorithms covered in the **Bioinformatics Course** part of the **Cambridge Computer Science Tripos**
 
+For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Index/Bioinformatics+Index)
+
 # Algorithms Implemented:
 
 ## **Alignment Problems:**
 - [x] [Needleman-Wunsch](bioinformatics/algorithms/needleman_wunsch.py)
   - [ ] Calculate LCS and Edit Distance using this approach
 - [x] [Waterman-Smith](bioinformatics/algorithms/waterman_smith.py)
+- [ ] Affine Gap Model
 - [ ] Nussinov RNA Folding
 - [ ] Space Efficient Global Alignment (#todo cleanup)
 - [x] [Method of Four Russians for LCS](bioinformatics/algorithms/four_russians_binary_encoding.py)
   - [ ] Extend to Edit Distance, Block Alignment and Global Alignment (for very simple score matrices)
+- [ ] The CLUSTAL W Mutliple Alignment
 
 
 ## **Phylogeny (Evolutionary Tree) Algorithms**:
@@ -29,6 +33,7 @@ This is a repository of all the algorithms covered in the **Bioinformatics Cours
 
 ### **Parsimony Based**:
 - [x] [Small Parsimony](bioinformatics/algorithms/small_parsimony.py)
+- [ ] Greedy Heuristic for Large Parsimony
 # Additional Files Explained:
 - [Demos](bioinformatics/demos.py) - **A list of functions that can be used to demo the algorithms**
 - [Scoring Functions](bioinformatics/algorithms/scoring_functions.py) - Stores different scoring matrices encapsulated into a function to use in alignment problems

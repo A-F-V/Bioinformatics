@@ -1,10 +1,11 @@
-from .alignment_graph import AlignmentGraph
+from .alignment_graph import Alignment_Graph
 
 #############################
 # Needleman-Wunsch Algorithm #
 #############################
+
 def align_needleman(s1,s2,scorer,indel):
-    graph = AlignmentGraph(s1,s2,scorer)
+    graph = Alignment_Graph(s1,s2,scorer)
     graph = fill_graph_needleman(graph,indel)
     return trace_pointers_needleman(graph)
 
