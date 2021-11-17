@@ -44,7 +44,9 @@ For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Inde
 - [x] [K-mer Composition](bioinformatics/algorithms/string_composition.py)
 - [x] [Genome Reconstructing](bioinformatics/algorithms/reconstruct_genome_string.py) - reconstrucsts a genome from the genome path
 - [x] [Overlap Graph Problem](bioinformatics/algorithms/sequencing_graph.py)
-- [x] [Debruijn Graph](bioinformatics/algorithms/sequencing_graph.py)
+- [x] [De Bruijn Graph](bioinformatics/algorithms/sequencing_graph.py) - create from string, kmers or paired kmers
+- [x] [Eulerian Problems](bioinformatics/algorithms/eulerian_cycle.py) - finding eulerian cycles and paths.
+- [x] [Reconstruct Genome / Sequence](bioinformatics/algorithms/reconstruct_genome_string.py) - reconstruct genome from genome path (path through a De Bruijn Graph), kmers and paired kmers. Construct a k-universal circular string.
 
 # Additional Files Explained:
 

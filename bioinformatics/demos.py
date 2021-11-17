@@ -1,5 +1,7 @@
 from algorithms.four_russians_binary_encoding import LCS, Sequence,DNACode
-from rosalind.q3g import q3g
+from algorithms.sequencing_graph import paired_kmers_to_debruijn
+from algorithms.reconstruct_genome_string import reconstruct_from_paired_kmers
+from rosalind.q3j import q3j
 from rosalind.q7f import q7f
 from algorithms.needleman_wunsch import align_needleman
 ###########
@@ -12,12 +14,26 @@ def FourRussianLCS():
     print(s1==s2)
     print(LCS(s1,s2))
 
+def paired_kmer_reconstruction():
+    pairs = """GAGA|TTGA
+    TCGT|GATG
+    CGTG|ATGT
+    TGGT|TGAG
+    GTGA|TGTT
+    GTGG|GTGA
+    TGAG|GTTG
+    GGTC|GAGA
+    GTCG|AGAT"""
+    pairs = pairs.split('\n')
+    pairs = [tuple(i.split("|")) for i in pairs]
+    print(pairs)
+    print(reconstruct_from_paired_kmers(pairs))
 
 ############
 # ROSALIND #
 ############
 
-q3g()
+q3j()
 
 ##############
 # Playground #

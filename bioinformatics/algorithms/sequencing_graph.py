@@ -8,13 +8,13 @@ def suffix(i):
 class Graph:
     def __init__(self, nodes:set,edges:dict):
         self.nodes = nodes
-        self.edges = edges
+        self.edges = {i:edges[i] for i in edges if len(edges[i])!=0}
         
     def __str__(self):
         output = ""
         for so in self.edges:
             if len(self.edges[so])!=0:
-                output += so + " -> " + ",".join(self.edges[so]) + "\n"
+                output += str(so) + " -> " + ",".join(map(str,self.edges[so])) + "\n"
         return output.strip()
     
     def __repr__(self):
@@ -52,7 +52,15 @@ def text_to_debruijn(k,text):
 
 def kmers_to_debruijn(kmers):
     raw_edges = [(prefix(mer),suffix(mer)) for mer in kmers]
-    nodes = set([i for i,j in raw_edges])
+    nodes = set([i for i,j in raw_edges]+[j for i,j in raw_edges])
+    edges = {i:set() for i in nodes}
+    for i,j in raw_edges:
+        edges[i].add(j)
+    return DeBruijn_Graph(nodes,edges)
+
+def paired_kmers_to_debruijn(paired_kmers): # paired_kmers = [(a_1,b_1),(a_2,b_2),...]
+    raw_edges = [((prefix(mer[0]),prefix(mer[1])),(suffix(mer[0]),suffix(mer[1]))) for mer in paired_kmers]
+    nodes = set([i for i,j in raw_edges]+[j for i,j in raw_edges])
     edges = {i:set() for i in nodes}
     for i,j in raw_edges:
         edges[i].add(j)
