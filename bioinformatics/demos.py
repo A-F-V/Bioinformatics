@@ -1,4 +1,5 @@
 from algorithms.four_russians_binary_encoding import LCS, Sequence,DNACode
+from rosalind.q3a import q3a
 from rosalind.q7f import q7f
 from algorithms.needleman_wunsch import align_needleman
 ###########
@@ -16,17 +17,13 @@ def FourRussianLCS():
 # ROSALIND #
 ############
 
-q7f()
+q3a()
 
 ##############
 # Playground #
 ##############
 
-#Q2 Supo 1
-Q2Scorer = lambda x,y: 5 if x==y else -3
-a,b = align_needleman("CGTGAA","GACTTAC",scorer= Q2Scorer,indel=-4)
-print(a)
-print(b)
+
 
 
 #FourRussianLCS()
