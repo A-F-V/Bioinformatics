@@ -1,5 +1,5 @@
 from algorithms.four_russians_binary_encoding import LCS, Sequence,DNACode
-from rosalind.q3c import q3c
+from rosalind.q3d import q3d
 from rosalind.q7f import q7f
 from algorithms.needleman_wunsch import align_needleman
 ###########
@@ -17,7 +17,7 @@ def FourRussianLCS():
 # ROSALIND #
 ############
 
-q3c()
+q3d()
 
 ##############
 # Playground #

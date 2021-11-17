@@ -1,5 +1,5 @@
 
-from algorithms.overlap_graph import Overlap_Graph
+from algorithms.sequencing_graph import Overlap_Graph
 from rosalind.rosalind import rosalind_solve
 def overlap_rosalind(in_text):
     return str(Overlap_Graph(in_text))
