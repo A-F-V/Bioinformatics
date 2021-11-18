@@ -49,6 +49,8 @@ For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Inde
 
 ## **Clustering**
 
+- [x] [Farthest-Clustering](bioinformatics/algorithms/clustering.py) - gets the set of centres found iteratively via max dist of (min dist to a centre)
+
 # Additional Files Explained:
 
 - [Demos](bioinformatics/demos.py) - **A list of functions that can be used to demo the algorithms**
