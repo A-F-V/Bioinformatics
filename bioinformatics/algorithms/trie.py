@@ -87,7 +87,32 @@ class Trie:
             self.parent[end] = start
             self.edge_values[(start, end)] = word
 
-        def rec(edges_used):
+        def dfs(start):
+            stack = []
+            for edge in list(self.edges[start]):
+                char = edge[1]
+                stack.append([(start, char)])
+            while len(stack) > 0:
+                path = stack.pop()
+                char = path[-1][1]
+                last_node = path[-1][0]
+                current_node = self.labelled_edges[(last_node, char)]
+
+                done = self.node_is_leaf(current_node)
+                if done:
+                    compress(path)
+                else:
+                    branches = len(self.edges[current_node]) > 1
+                    if branches:
+                        compress(path)
+                        for edge in list(self.edges[current_node]):
+                            next_char = edge[1]
+                            stack.append([(current_node, next_char)])
+                    else:
+                        next_char = self.edges[current_node][0][1]
+                        stack.append(path + [(current_node, next_char)])
+
+        def rec(edges_used):  # make non recursive
             char = edges_used[-1][1]
             last_node = edges_used[-1][0]
             current_node = self.labelled_edges[(last_node, char)]
@@ -106,9 +131,16 @@ class Trie:
                     next_char = self.edges[current_node][0][1]
                     rec(edges_used + [(current_node, next_char)])
 
-        for edge in self.edges[self.root]:
-            char = edge[1]
-            rec([(self.root, char)])
+        # because compress alters this list, we need to make a copy before we do loop
+       # for edge in list(self.edges[self.root]):
+       #     char = edge[1]
+       #     rec([(self.root, char)])
+        dfs(self.root)
+        for node in self.edges:
+            assert len(self.edges[node]) >= 2
+
+    def node_is_leaf(self, node):
+        return node not in self.edges or len(self.edges[node]) == 0
 
 
 class SuffixTrie(Trie):
@@ -117,6 +149,22 @@ class SuffixTrie(Trie):
 
     def get_suffix_terminal_node(self, i):
         return self.terminals[i]
+
+    def get_longest_repeat_string(self):
+        """
+        Finds the longest path to a penultimate node.
+        """
+        def long_path(node, pre_text):
+            if self.node_is_leaf(node):
+                return ""
+            else:
+                best = pre_text
+                for next_node, text in self.edges[node]:
+                    attempt = long_path(next_node, pre_text + text)
+                    if len(attempt) > len(best):
+                        best = attempt
+                return best
+        return long_path(self.root, "")
 
 
 def create_trie(words):

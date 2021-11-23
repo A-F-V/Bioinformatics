@@ -1,6 +1,6 @@
 from rosalind.rosalind import rosalind_solve, parse_rows_of_vectors, vector_to_row
 from data_processors.adj_to_graph import agg_adj_to_graph
-from algorithms.clustering import distortion, lloyd_kmeans, soft_kmeans
+from algorithms.clustering import distortion, lloyd_kmeans
 from algorithms.trie import create_trie, Trie, create_suffix_trie
 
 

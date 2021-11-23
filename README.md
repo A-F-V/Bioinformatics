@@ -50,6 +50,11 @@ For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Inde
 ## **Clustering**
 
 - [x] [Farthest-Clustering](bioinformatics/algorithms/clustering.py) - gets the set of centres found iteratively via max dist of (min dist to a centre)
+- [x] [Distortion Metric](bioinformatics/algorithms/clustering.py)
+- [x] [Hard K-Means / Lloyd Algorithm](bioinformatics/algorithms/clustering.py)
+- [x] [Soft K-Means](bioinformatics/algorithms/clustering.py) - using the parition function with stiffness
+- [ ] [Hierarchical Clustering]
+- [ ] [Markov Clustering Algorithm]
 
 # Additional Files Explained:
 

@@ -1,6 +1,7 @@
 from rosalind.q8a import q8a
 from rosalind.q8b import q8b
 from rosalind.q8c import q8c
+from rosalind.q8d import q8d
 
 
 def test_farthest_centre():
@@ -17,3 +18,8 @@ def test_distortion():
 def test_lloyd():
     x = q8c("bioinformatics/tests/data/rosalind/iq8c.txt", None)
     assert abs(float(x[0].split(' ')[0])-1.8) < 0.001
+
+
+def test_soft_clustering():
+    x = q8d("bioinformatics/tests/data/rosalind/iq8d.txt", None)
+    assert abs(float(x[0].split(' ')[0])-1.662) < 0.001
