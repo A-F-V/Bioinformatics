@@ -1,7 +1,7 @@
 from algorithms.four_russians_binary_encoding import LCS, Sequence, DNACode
 from algorithms.sequencing_graph import paired_kmers_to_debruijn
 from algorithms.reconstruct_genome_string import reconstruct_from_paired_kmers
-from rosalind.q9d import q9d
+from rosalind.q9f import q9f
 from algorithms.needleman_wunsch import align_needleman
 from algorithms.clustering import lloyd_kmeans, add_vector, assign_to_cluster
 from random import random
@@ -68,7 +68,7 @@ def paired_kmer_reconstruction():
 ############
 
 
-q9d()
+q9f()
 
 ##############
 # Playground #

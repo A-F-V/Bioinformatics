@@ -1,3 +1,9 @@
+from cgi import test
+from operator import pos
+import networkx as nx
+import matplotlib.pyplot as plt
+import pydot
+from networkx.drawing.nx_pydot import graphviz_layout
 
 
 class Trie:
@@ -142,8 +148,28 @@ class Trie:
     def node_is_leaf(self, node):
         return node not in self.edges or len(self.edges[node]) == 0
 
+    def render(self):
+        """
+        For visualizing the Trie
+        """
+        graph = nx.DiGraph()
+        graph.add_nodes_from(self.nodes)
+        graph.add_edges_from([(l_edge[0], self.labelled_edges[l_edge]) for l_edge in self.labelled_edges])
+        pos = graphviz_layout(graph, prog="dot")
 
-class SuffixTrie(Trie):
+        plt.figure()
+        nx.draw(
+            graph, pos, edge_color='black', width=1, linewidths=1,
+            node_size=100, node_color='pink', alpha=0.9
+        )
+        nx.draw_networkx_edge_labels(
+            graph, pos,
+            edge_labels={edge: self.edge_values[edge] for edge in self.edge_values},
+            font_color='red')
+        plt.show(block=True)
+
+
+class SuffixTree(Trie):
     def __init__(self, nodes, edges, root, terminals):
         Trie.__init__(self, nodes, edges, root, terminals)
 
@@ -165,6 +191,71 @@ class SuffixTrie(Trie):
                         best = attempt
                 return best
         return long_path(self.root, "")
+
+    def longest_substring_match(self, text):
+        """
+        Finds the longest substring that is also a substring of a suffix of the text.
+        """
+        def match(reference_text, testing_text):
+            """
+            Returns the longest match + the rest of testing_text that can be used
+            """
+            imax = 0
+            for i in range(len(reference_text)):
+                if i >= len(testing_text):
+                    return testing_text, ""
+                if reference_text[i] != testing_text[i]:
+                    return testing_text[:imax], ""
+                imax += 1
+            return testing_text[:imax], testing_text[imax:]
+
+        def rec(node, text, append_text=""):  # to make tail recursive
+            if self.node_is_leaf(node):
+                return append_text
+            for next_node, ref_text in self.edges[node]:
+                matched_text, text_left = match(ref_text, text)
+                if len(matched_text) == 0:
+                    continue
+                if text_left == "":
+                    return append_text+matched_text
+                return rec(next_node, text_left, append_text+matched_text)
+            return append_text
+        return rec(self.root, text)
+
+    def shortest_non_substring(self, text):
+        """
+        Finds the shortest substring that is not a substring of any prefix. This is the same as longest substring where we include the last non_matched element
+        If returned string ends in (M) then there was an inevitable match, text is wholly included in the trie and thus no such non_shared_string exists.
+        """
+        # algorithm works by matching as much as is unavoidable, and then once there is no matches, we just add the last character
+        def match(reference_text, testing_text):
+            """
+            Returns the longest match + the rest of testing_text that can be used
+            """
+            imax = 0
+            for i in range(len(reference_text)):
+                if i >= len(testing_text):
+                    return testing_text, ""
+                if reference_text[i] != testing_text[i]:
+                    return testing_text[:imax], ""
+                imax += 1
+            return testing_text[:imax], testing_text[imax:]
+
+        def rec(node, text, append_text=""):
+            if self.node_is_leaf(node):
+                return append_text+"(M)"
+            for next_node, ref_text in self.edges[node]:
+                matched_text, text_left = match(ref_text, text)
+                if len(matched_text) == 0:
+                    continue
+                if text_left == "":  # so we've matched all we can
+                    if matched_text == text:  # unavoidable match
+                        return append_text+matched_text + "(M)"
+                    # this last term is the character that causes the mismatch
+                    return append_text+matched_text+text[len(matched_text)]
+                return rec(next_node, text_left, append_text+matched_text)
+            return append_text+text[0]
+        return rec(self.root, text)
 
 
 def create_trie(words):
@@ -206,4 +297,4 @@ def create_suffix_trie(text, has_dollar=True):
     patterns = map(lambda i: text[i:], range(len(text)))
     trie = create_trie(patterns)
     trie.compress_non_branching_path()
-    return SuffixTrie(trie.nodes, trie.labelled_edges, trie.root, trie.terminals)
+    return SuffixTree(trie.nodes, trie.labelled_edges, trie.root, trie.terminals)

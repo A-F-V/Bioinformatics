@@ -56,6 +56,10 @@ For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Inde
 - [ ] [Hierarchical Clustering]
 - [ ] [Markov Clustering Algorithm]
 
+## **Pattern Matching**
+
+- [x] [Tries and Suffix Tries](/bioinformatics/algorithms/trie.py) - the suffix trie implemented is not the O(n) version which requires pointers etc. It is O(n^2).
+
 # Additional Files Explained:
 
 - [Demos](bioinformatics/demos.py) - **A list of functions that can be used to demo the algorithms**
