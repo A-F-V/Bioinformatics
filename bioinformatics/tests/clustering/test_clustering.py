@@ -1,7 +1,7 @@
-from rosalind.q8a import q8a
-from rosalind.q8b import q8b
-from rosalind.q8c import q8c
-from rosalind.q8d import q8d
+from rosalind.solutions.q8a import q8a
+from rosalind.solutions.q8b import q8b
+from rosalind.solutions.q8c import q8c
+from rosalind.solutions.q8d import q8d
 
 
 def test_farthest_centre():

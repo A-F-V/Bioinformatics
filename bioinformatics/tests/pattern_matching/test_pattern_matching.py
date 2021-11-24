@@ -1,7 +1,8 @@
-from rosalind.q9a import q9a
-from rosalind.q9b import q9b
-from rosalind.q9c import q9c
+from rosalind.solutions.q9a import q9a
+from rosalind.solutions.q9b import q9b
+from rosalind.solutions.q9c import q9c
 from algorithms.trie import create_suffix_trie
+from algorithms.suffix_array import create_suffix_array
 
 
 def test_generate_trie():
@@ -40,3 +41,8 @@ def test_longest_substring_trie():
     res = create_suffix_trie("ATATCGTTTTATCGTT", False)
     res = res.get_longest_repeat_string()
     assert len(res) == len("TATCGTT")
+
+
+def test_suffix_array_construction():
+    sarray = create_suffix_array("AACGATAGCGGTAGA$")
+    assert sarray.indices == [15, 14, 0, 1, 12, 6, 4, 2, 8, 13, 3, 7, 9, 10, 11, 5]

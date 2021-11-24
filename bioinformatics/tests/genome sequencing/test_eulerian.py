@@ -1,5 +1,5 @@
-from rosalind.q3f import q3f
-from rosalind.q3g import q3g
+from rosalind.solutions.q3f import q3f
+from rosalind.solutions.q3g import q3g
 
 
 def test_eulerian_simple_cycle():
