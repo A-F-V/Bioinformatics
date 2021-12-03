@@ -2,3 +2,9 @@ tqdm
 numpy
 pandas
 pytest
+networkx
+matplotlib
+scipy
+PyQt5
+pydot
+graphviz

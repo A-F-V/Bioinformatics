@@ -49,6 +49,17 @@ For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Inde
 
 ## **Clustering**
 
+- [x] [Farthest-Clustering](bioinformatics/algorithms/clustering.py) - gets the set of centres found iteratively via max dist of (min dist to a centre)
+- [x] [Distortion Metric](bioinformatics/algorithms/clustering.py)
+- [x] [Hard K-Means / Lloyd Algorithm](bioinformatics/algorithms/clustering.py)
+- [x] [Soft K-Means](bioinformatics/algorithms/clustering.py) - using the parition function with stiffness
+- [ ] [Hierarchical Clustering]
+- [ ] [Markov Clustering Algorithm]
+
+## **Pattern Matching**
+
+- [x] [Tries and Suffix Tries](/bioinformatics/algorithms/trie.py) - the suffix trie implemented is not the O(n) version which requires pointers etc. It is O(n^2).
+
 # Additional Files Explained:
 
 - [Demos](bioinformatics/demos.py) - **A list of functions that can be used to demo the algorithms**
