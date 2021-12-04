@@ -8,5 +8,5 @@ def trie_rosalind(words):
     return str(create_trie(words))
 
 
-def q9a(i="bioinformatics/rosalind/io/i9a.txt", o="bioinformatics/rosalind/io/o9a.txt"):
+def q9a(i="bioinformatics/rosalind/io/i9a.txt", o="bioinformatics/rosalind/io/o.txt"):
     return rosalind_solve(i, o, trie_rosalind)

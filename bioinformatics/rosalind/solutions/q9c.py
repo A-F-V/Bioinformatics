@@ -14,5 +14,5 @@ def suffix_trie_rosalind(text):
     return '\n'.join(output)
 
 
-def q9c(i="bioinformatics/rosalind/io/i9c.txt", o="bioinformatics/rosalind/io/o9c.txt"):
+def q9c(i="bioinformatics/rosalind/io/i9c.txt", o="bioinformatics/rosalind/io/o.txt"):
     return rosalind_solve(i, o, suffix_trie_rosalind)
