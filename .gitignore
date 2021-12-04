@@ -131,3 +131,5 @@ dmypy.json
 .vscode/*
 
 out/*
+
+bioinformatics/rosalind/io/*

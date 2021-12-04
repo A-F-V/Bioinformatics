@@ -10,5 +10,5 @@ def trie_matching_rosalind(words):
     return " ".join(map(str, match_text_to_patterns(text, patterns)))
 
 
-def q9b(i="bioinformatics/rosalind/io/i9b.txt", o="bioinformatics/rosalind/io/o9b.txt"):
+def q9b(i="bioinformatics/rosalind/io/i9b.txt", o="bioinformatics/rosalind/io/o.txt"):
     return rosalind_solve(i, o, trie_matching_rosalind)
