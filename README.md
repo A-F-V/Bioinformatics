@@ -59,6 +59,7 @@ For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Inde
 ## **Pattern Matching**
 
 - [x] [Tries and Suffix Tries](/bioinformatics/algorithms/trie.py) - the suffix trie implemented is not the O(n) version which requires pointers etc. It is O(n^2).
+- [x] [Burrows-Wheeler Transform and Matching](/bioinformatics/algorithms/burrows_wheeler.py)
 
 # Additional Files Explained:
 
