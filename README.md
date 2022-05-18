@@ -61,6 +61,15 @@ For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Inde
 - [x] [Tries and Suffix Tries](/bioinformatics/algorithms/trie.py) - the suffix trie implemented is not the O(n) version which requires pointers etc. It is O(n^2).
 - [x] [Burrows-Wheeler Transform and Matching](/bioinformatics/algorithms/burrows_wheeler.py)
 
+## **Hidden Markov Models**
+
+- [x] [HMM Evaluate](bioinformatics/algorithms/hmm.py) - find probs of hidden path or visible path given hidden path
+- [x] [HMM Decode/Viterbi](bioinformatics/algorithms/hmm.py) - Viterbi
+- [x] [HMM Forward](bioinformatics/algorithms/hmm.py)
+- [ ] [HMM Backward](bioinformatics/algorithms/hmm.py) - todo, simply reverse matrices then run forward
+- [ ] [Viterbi Learning](bioinformatics/algorithms/hmm.py)
+- [ ] [Baum-Welch](bioinformatics/algorithms/hmm.py)
+
 # Additional Files Explained:
 
 - [Demos](bioinformatics/demos.py) - **A list of functions that can be used to demo the algorithms**

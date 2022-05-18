@@ -1,7 +1,7 @@
 from algorithms.four_russians_binary_encoding import LCS, Sequence, DNACode
 from algorithms.sequencing_graph import paired_kmers_to_debruijn
 from algorithms.reconstruct_genome_string import reconstruct_from_paired_kmers
-from rosalind.solutions.q9l import q9l
+from rosalind.solutions.q10d import q10d
 from algorithms.suffix_array import create_suffix_array
 from algorithms.needleman_wunsch import align_needleman
 from algorithms.clustering import lloyd_kmeans, add_vector, assign_to_cluster
@@ -69,20 +69,6 @@ def paired_kmer_reconstruction():
 # ROSALIND #
 ############
 
-
-genome = "CATATATAG$"
-bwt_genome = bwt(genome)
-locations = bwt_matching_all(bwt_genome, ["CAT", "TAT"])  # yields a list of locations with start inc, end exc
-CAT_range = locations[0]  # gets occurences of CAT range
-TAT_range = locations[1]  # gets occurences of TAT range
-sarray = create_suffix_array(genome)
-CAT_indices = sorted([sarray.indices[i] for i in range(CAT_range[0], CAT_range[1])])
-TAT_indices = sorted([sarray.indices[i] for i in range(TAT_range[0], TAT_range[1])])
-
-
-print(f"The genome is: {genome}\nThe BWT is: {bwt_genome}\nThe indices of CAT are: {CAT_indices}\nThe indices of TAT are: {TAT_indices}")
-
-# q9l()
 
 ##############
 # Playground #
