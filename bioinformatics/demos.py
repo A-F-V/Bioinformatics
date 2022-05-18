@@ -1,3 +1,6 @@
+import os
+from algorithms.distance_matrix import DistanceMatrix
+from algorithms.additive_phylogeny import additive_phylogeny
 from algorithms.four_russians_binary_encoding import LCS, Sequence, DNACode
 from algorithms.sequencing_graph import paired_kmers_to_debruijn
 from algorithms.reconstruct_genome_string import reconstruct_from_paired_kmers
@@ -10,6 +13,10 @@ from random import random
 import matplotlib.pyplot as plt
 from functools import reduce
 from operator import concat
+
+
+top_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+
 ###########
 # Example #
 ###########
@@ -50,20 +57,11 @@ def FourRussianLCS():
     print(LCS(s1, s2))
 
 
-def paired_kmer_reconstruction():
-    pairs = """GAGA|TTGA
-    TCGT|GATG
-    CGTG|ATGT
-    TGGT|TGAG
-    GTGA|TGTT
-    GTGG|GTGA
-    TGAG|GTTG
-    GGTC|GAGA
-    GTCG|AGAT"""
-    pairs = pairs.split('\n')
-    pairs = [tuple(i.split("|")) for i in pairs]
-    print(pairs)
-    print(reconstruct_from_paired_kmers(pairs))
+def run_additive_phylogeny():
+    path = os.path.join(top_dir, "example_data", "additive_phylogeny.txt")
+    d_matrix = DistanceMatrix.from_txt_file(path)
+    tree = additive_phylogeny(d_matrix)
+    print(tree)
 
 ############
 # ROSALIND #
@@ -74,5 +72,4 @@ def paired_kmer_reconstruction():
 # Playground #
 ##############
 
-
-# FourRussianLCS()
+run_additive_phylogeny()
