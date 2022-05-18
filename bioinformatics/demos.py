@@ -70,8 +70,6 @@ def paired_kmer_reconstruction():
 ############
 
 
-q10d()
-
 ##############
 # Playground #
 ##############
