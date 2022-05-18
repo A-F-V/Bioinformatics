@@ -1,6 +1,7 @@
 import os
 from algorithms.distance_matrix import DistanceMatrix
 from algorithms.additive_phylogeny import additive_phylogeny
+from algorithms.upgma import upgma
 from algorithms.four_russians_binary_encoding import LCS, Sequence, DNACode
 from algorithms.sequencing_graph import paired_kmers_to_debruijn
 from algorithms.reconstruct_genome_string import reconstruct_from_paired_kmers
@@ -17,9 +18,9 @@ from operator import concat
 
 top_dir = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
-###########
-# Example #
-###########
+##############
+# Additional #
+##############
 
 
 def flatten(l):
@@ -57,10 +58,22 @@ def FourRussianLCS():
     print(LCS(s1, s2))
 
 
+###########
+# Example #
+###########
+
+
 def run_additive_phylogeny():
     path = os.path.join(top_dir, "example_data", "additive_phylogeny.txt")
     d_matrix = DistanceMatrix.from_txt_file(path)
     tree = additive_phylogeny(d_matrix)
+    print(tree)
+
+
+def run_upgma():
+    path = os.path.join(top_dir, "example_data", "upgma.txt")
+    d_matrix = DistanceMatrix.from_txt_file(path, with_ij_queue=True)  # needed for fast algorithm
+    tree = upgma(d_matrix)
     print(tree)
 
 ############
@@ -72,4 +85,4 @@ def run_additive_phylogeny():
 # Playground #
 ##############
 
-run_additive_phylogeny()
+run_upgma()

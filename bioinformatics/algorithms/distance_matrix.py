@@ -4,7 +4,7 @@ from heapq import *
 
 
 class DistanceMatrix:  # lazy implementation, indexed via names
-    def __init__(self, mat, names, with_ij_queue=False):  # takes 2d list and names and creates named matrix
+    def __init__(self, mat, names, with_ij_queue=True):  # takes 2d list and names and creates named matrix
         self.names = names
         self.data = {}
         self.smallest = []
@@ -18,7 +18,7 @@ class DistanceMatrix:  # lazy implementation, indexed via names
                     heappush(self.smallest, (self.data[name][jname], name, jname))
 
     @staticmethod
-    def from_txt_file(file_loc):
+    def from_txt_file(file_loc, **kwargs):
         """File must start with n, the height of the matrix, and then be followed by n rows of n elements, space seperated. If the matrix starts with an extra column at the start, they will be used as the names.
 
         Args:
@@ -39,7 +39,7 @@ class DistanceMatrix:  # lazy implementation, indexed via names
                     names.append(elements[0])
                     elements = elements[1:]
                 mat.append(list(map(float, elements)))
-            return DistanceMatrix(mat, names)
+            return DistanceMatrix(mat, names, **kwargs)
 
     def remove(self, name):
         if name in self.data:
