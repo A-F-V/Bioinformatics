@@ -40,7 +40,7 @@ class ViterbiGraph:
         self.start_val = start_val
         self.default = default
 
-    @lru_cache
+    @lru_cache(maxsize=None)
     def forward(self):
         graph = {(0, "START"): self.start_val}
         for i in range(1, len(self.x) + 2):
