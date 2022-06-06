@@ -52,7 +52,7 @@ def additive_phylogeny(d_mat: DistanceMatrix, inner_node_next_label=None):
         x = d_mat.names[0]
         l_x = int(limb_length_n(x, d_mat))
         d_bald = d_mat.balden(x, l_x)
-        # Needed for the combination step. Correspond to two leaves that are in different subtrees relative to the
+        # Needed for the combination step. Correspond to two leaves that are in different subtrees relative to x.
         _, a, b = limb_length_n(x, d_bald, True)
         d_ax = d_bald.get(a, x)  # distance from a to x's parent along path to b
         d_trim = d_bald.trim(x)

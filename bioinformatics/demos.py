@@ -5,6 +5,7 @@ from algorithms.upgma import upgma
 from algorithms.four_russians_binary_encoding import LCS, Sequence, DNACode
 from algorithms.sequencing_graph import paired_kmers_to_debruijn
 from algorithms.reconstruct_genome_string import reconstruct_from_paired_kmers
+from algorithms.neighbour_joining import neighbour_joining
 from rosalind.solutions.q10d import q10d
 from algorithms.suffix_array import create_suffix_array
 from algorithms.needleman_wunsch import align_needleman
@@ -75,7 +76,15 @@ def run_upgma():
     d_matrix = DistanceMatrix.from_txt_file(path, with_ij_queue=True)  # needed for fast algorithm
     tree = upgma(d_matrix)
     print(tree)
+    tree.draw()
 
+
+def run_neighbour_joining():
+    path = os.path.join(top_dir, "example_data", "neighbour_joining.txt")
+    d_matrix = DistanceMatrix.from_txt_file(path, with_ij_queue=False)
+    tree = neighbour_joining(d_matrix)
+    print(tree)
+    tree.draw()
 ############
 # ROSALIND #
 ############
@@ -85,4 +94,4 @@ def run_upgma():
 # Playground #
 ##############
 
-run_upgma()
+run_neighbour_joining()

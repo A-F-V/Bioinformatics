@@ -1,4 +1,7 @@
-#import flatten
+# import flatten
+import networkx as nx
+import matplotlib.pyplot as plt
+
 
 def flatten_list(l):
     """
@@ -8,7 +11,7 @@ def flatten_list(l):
 
 
 class AdditivePhylogenyTree:
-    """Evolutionary tree, where nodes can be added by attaching them to an existing parent node.
+    """Evolutionary tree, where nodes can be added by attaching them to an existing parent node. Used in the Additive phylogeny and also Neighbour Joining algorithms.
     """
 
     def __init__(self):
@@ -74,6 +77,17 @@ class AdditivePhylogenyTree:
     def __repr__(self):
         return self.__str__()
 
+    def draw(self):
+        G = nx.Graph()
+        G.add_nodes_from(self.nodes)
+        for x, lx in self.edges.items():
+            for y, ly in lx.items():
+                G.add_edge(x, y, weight=round(float(ly), ndigits=2))
+        pos = nx.drawing.nx_pydot.graphviz_layout(G, prog='twopi')
+        nx.draw(G, pos=pos, with_labels=True, font_weight='bold')
+        nx.draw_networkx_edge_labels(G, pos=pos, edge_labels=nx.get_edge_attributes(G, 'weight'))
+        plt.show()
+
 
 class UPGMATree:
     def __init__(self, leafs):
@@ -95,3 +109,14 @@ class UPGMATree:
 
     def __repr__(self):
         return self.__str__()
+
+    def draw(self):
+        G = nx.Graph()
+        G.add_nodes_from(self.nodes)
+        for x, lx in self.edges.items():
+            for y, ly in lx.items():
+                G.add_edge(x, y, weight=round(float(ly), ndigits=2))
+        pos = nx.drawing.nx_pydot.graphviz_layout(G, prog='dot')
+        nx.draw(G, pos=pos, with_labels=True, font_weight='bold')
+        nx.draw_networkx_edge_labels(G, pos=pos, edge_labels=nx.get_edge_attributes(G, 'weight'))
+        plt.show()

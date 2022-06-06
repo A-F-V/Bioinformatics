@@ -3,7 +3,7 @@ from heapq import *
 # can do i,j with priority queue to find smallest i,j
 
 
-class DistanceMatrix:  # lazy implementation, indexed via names
+class DistanceMatrix:  # For a more efficient implementation, make data structure lazy.
     def __init__(self, mat, names, with_ij_queue=True):  # takes 2d list and names and creates named matrix
         self.names = names
         self.data = {}
