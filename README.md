@@ -66,7 +66,7 @@ For some explanations, check out [The Moon](https://publish.obsidian.md/afv/Inde
 - [x] [HMM Evaluate](bioinformatics/algorithms/hmm.py) - find probs of hidden path or visible path given hidden path
 - [x] [HMM Decode/Viterbi](bioinformatics/algorithms/hmm.py) - Viterbi
 - [x] [HMM Forward](bioinformatics/algorithms/hmm.py)
-- [ ] [HMM Backward](bioinformatics/algorithms/hmm.py) - todo, simply reverse matrices then run forward
+- [ ] [HMM Backward](bioinformatics/algorithms/hmm.py)
 - [ ] [Viterbi Learning](bioinformatics/algorithms/hmm.py)
 - [ ] [Baum-Welch](bioinformatics/algorithms/hmm.py)
 
