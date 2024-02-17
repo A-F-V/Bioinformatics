@@ -35,7 +35,5 @@ class Alignment_Graph:
 
     def prnt(self):
         for r in range(len(self.s1)+1):
-            o = []
-            for c in range(len(self.s2)+1):
-                o.append(self.pos(r,c))
+            o = [self.pos(r,c) for c in range(len(self.s2)+1)]
             print(o)

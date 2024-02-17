@@ -9,8 +9,7 @@ def suffix_trie_rosalind(text):
     trie = create_suffix_trie(text)
     output = []
     for frm in trie.edges:
-        for edge in trie.edges[frm]:
-            output.append(edge[1])
+        output.extend(edge[1] for edge in trie.edges[frm])
     return '\n'.join(output)
 
 

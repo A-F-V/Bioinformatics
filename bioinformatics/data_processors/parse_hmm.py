@@ -19,5 +19,4 @@ def parse_hmm(text):
     states = parse_row(text[4])
     transitions = TransitionMatrix(states, parse_table(states, states, text[6:6+len(states)+1]))
     emissions = EmissionMatrix(states, symbols, parse_table(states, symbols, text[6+len(states)+2:]))
-    hmm = HMM(symbols, states, transitions, emissions)
-    return hmm
+    return HMM(symbols, states, transitions, emissions)

@@ -3,15 +3,17 @@ from math import inf, exp
 
 
 def distance(x, y):
-    return sum([(a - b)**2 for a, b in zip(x, y)])**0.5
+    return sum((a - b)**2 for a, b in zip(x, y))**0.5
 
 
 def dist_to_cluster(point, centres):  # how close is the point to the cluster it is assigned to (i.e. the nearest centre)?
-    return min([distance(point, centre) for centre in centres])
+    return min(distance(point, centre) for centre in centres)
 
 
 def distortion(points, centres):
-    return sum([dist_to_cluster(point, centres)**2 for point in points])/len(points)
+    return sum(dist_to_cluster(point, centres) ** 2 for point in points) / len(
+        points
+    )
 
 
 def farthest_first_clustering(points, k):
@@ -34,7 +36,7 @@ def assign_to_cluster(point, centres):
 
 
 def add_vector(a, b):
-    if b == None:
+    if b is None:
         print("STOP")
     return tuple(map(lambda x: x[0]+x[1], zip(a, b)))
 
@@ -72,9 +74,7 @@ def lloyd_kmeans(points, k, initializer=False):
 
 
 def get_responsibilities(point, centres, beta):
-    h_vals = []
-    for centre in centres:
-        h_vals.append(exp(-beta*distance(point, centre)))
+    h_vals = [exp(-beta*distance(point, centre)) for centre in centres]
     return [h_val/sum(h_vals) for h_val in h_vals]
 
 

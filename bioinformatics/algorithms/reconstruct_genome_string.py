@@ -23,8 +23,7 @@ def construct_k_universal_circular_string(k:int):
     kmers = list(Sequence(["0","1"],k))
     graph = kmers_to_debruijn(kmers)
     genome_path = eulerian_cycle(graph)
-    const = reconstruct_from_genome_path(genome_path)[:-(k-1)]
-    return const
+    return reconstruct_from_genome_path(genome_path)[:-(k-1)]
     
 def reconstruct_from_paired_kmers(paired_kmers:list,k:int,d:int):
     graph = paired_kmers_to_debruijn(paired_kmers)

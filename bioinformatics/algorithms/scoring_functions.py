@@ -94,7 +94,7 @@ PAM250_matrix = {'A': {'A': 2, 'R': -2, 'N': 0, 'D': 0, 'C': -2, 'Q': 0, 'E': 0,
           'B': {'A': 2, 'R': 1, 'N': 4, 'D': 5, 'C': -3, 'Q': 3, 'E': 4, 'G': 2, 'H': 3, 'I': -1, 'L': -2, 'K': 2, 'M': -1, 'F': -3, 'P': 1, 'S': 2, 'T': 2, 'W': -4, 'Y': -2, 'V': 0, 'B': 6, 'Z': 5},
           'Z': {'A': 1, 'R': 2, 'N': 3, 'D': 4, 'C': -4, 'Q': 5, 'E': 5, 'G': 1, 'H': 3, 'I': -1, 'L': -1, 'K': 2, 'M': 0, 'F': -4, 'P': 1, 'S': 1, 'T': 1, 'W': -4, 'Y': -3, 'V': 0, 'B': 5, 'Z': 6}}
 
-Blosum62 = lambda x,y:(blosum62_matrix[(x,y)] if (x,y) in blosum62_matrix else blosum62_matrix[(y,x)])
+Blosum62 = lambda x,y: blosum62_matrix.get((x, y), blosum62_matrix[(y,x)])
 
 PAM250 = lambda x,y:PAM250_matrix[(x,y)]
 

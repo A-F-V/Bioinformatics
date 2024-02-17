@@ -5,7 +5,7 @@ from algorithms.distance_matrix import DistanceMatrix
 import math
 
 
-def neighbour_joining(d_mat: DistanceMatrix, inner_node_next_label=None):  # DO NOT USE heaping distance matrix
+def neighbour_joining(d_mat: DistanceMatrix, inner_node_next_label=None):    # DO NOT USE heaping distance matrix
     """Performs the neighbour joining algorithm on the given distance matrix.  This is a recurisve algorithm, so base and inductive cases need to be considered. It is also a greedy algorithm in which the closest pair of nodes in the augmented distance matrix are joined.
 
     Args:
@@ -30,7 +30,9 @@ def neighbour_joining(d_mat: DistanceMatrix, inner_node_next_label=None):  # DO 
 
     # INDUCTIVE CASE
     # 1) Compute total_distance for each element in distance matrix
-    total_distance = {i: sum([d_mat.get(i, k) for k in d_mat.names]) for i in d_mat.names}
+    total_distance = {
+        i: sum(d_mat.get(i, k) for k in d_mat.names) for i in d_mat.names
+    }
 
     # 2) Find nodes which are closest to one another in D*, which is the same matrix except D*i,j = (n-2)*Dij - TotalDistance(i) - TotalDistance(j). The matrix is not explicitly stored, but its entries are searched.
     nexti, nextj, bestscore = None, None, math.inf

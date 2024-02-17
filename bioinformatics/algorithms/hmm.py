@@ -68,9 +68,7 @@ class ViterbiGraph:
     def __getitem__(self, key):
         if key == "START":
             return self.graph[0, "START"]
-        if key == "END":
-            return self.graph[len(self.x)+1, "END"]
-        return self.graph[key]
+        return self.graph[len(self.x)+1, "END"] if key == "END" else self.graph[key]
 
 
 class HMM:

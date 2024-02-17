@@ -20,12 +20,12 @@ def fill_graph_needleman(graph,indel,offset=0,left=None,top=None):
             if r==c==0:
                 graph.set(r,c,offset)
             elif r==0:
-                if top==None:
+                if top is None:
                     graph.set(r,c,graph.pos(r,c-1)+indel,2)
                 else:
                     graph.set(r,c,top[c-1])
             elif c==0:
-                if left==None:
+                if left is None:
                     graph.set(r,c,graph.pos(r-1,c)+indel,1)
                 else:
                     graph.set(r,c,left[r-1])
@@ -45,14 +45,11 @@ class Sequence:
         self.empty= empty
     
     def random(self):
-        output = ""
-        for i in range(self.t):
-            output += random.choice(self.chars)
-        return output
+        return "".join(random.choice(self.chars) for _ in range(self.t))
     def objWithNum(self,i):
         output = ""
         v = i
-        for ind in range(self.t):
+        for _ in range(self.t):
             output = str(self.chars[v%len(self.chars)]) +output
             v //= len(self.chars)
         return output
@@ -87,7 +84,7 @@ class Sequence:
 def accumulate_diff(diffs):
     o = []
     for i in diffs:
-        if len(o) > 0:
+        if o:
             o.append(i+o[-1])
         else:
             o.append(i)

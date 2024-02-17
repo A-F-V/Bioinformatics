@@ -97,17 +97,21 @@ PAM250 = {
 'Z': {'A':1, 'R':2, 'N':3, 'D':4, 'C':-4, 'Q':5, 'E':5, 'G':1, 'H':3, 'I':-1, 'L':-1, 'K':2, 'M':0, 'F':-4,'P': 1, 'S':1, 'T':1,'W': -4, 'Y':-3, 'V':0, 'B':5, 'Z':6}}
 
 def blosum62score(a,b):
-    if (a,b) in blosum62:
-        return blosum62[(a,b)]
-    return blosum62[(b,a)]
+    return blosum62[(a,b)] if (a,b) in blosum62 else blosum62[(b,a)]
 
 def prefix(s1,s2,col):
     height = len(s1)
     c1 = [i*indel for i in range(0,height+1)]
-    for i in range(1,col+1):
+    for _ in range(1,col+1):
         c2 = [c1[0]+indel]
-        for row in range(1,height+1):
-            c2.append(max(c2[row-1]+indel,c1[row]+indel,c1[row-1]+blosum62score(s1[row-1],s2[col-1])))
+        c2.extend(
+            max(
+                c2[row - 1] + indel,
+                c1[row] + indel,
+                c1[row - 1] + blosum62score(s1[row - 1], s2[col - 1]),
+            )
+            for row in range(1, height + 1)
+        )
         c1 = c2
     return c1
 
@@ -147,13 +151,11 @@ s2 = "MEASNLY"
 print(middleNode(s1,s2))
 
 def rosalind(filei,filej,func):
-    f = open(filei,"r")
-    w1 = f.readline().rstrip('\n')
-    w2 = f.readline().rstrip('\n')
-    f.close()
+    with open(filei,"r") as f:
+        w1 = f.readline().rstrip('\n')
+        w2 = f.readline().rstrip('\n')
     o  = func(w1,w2)
-    f = open(filej,"w")
-    f.writelines(str(o))
-    f.close()
+    with open(filej,"w") as f:
+        f.writelines(str(o))
 
 rosalind("i1.txt","o1.txt",middleEdge)
