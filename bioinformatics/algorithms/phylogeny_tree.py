@@ -37,8 +37,7 @@ class AdditivePhylogenyTree:
 
     def shortest_path(self, i, k):
         queue = [i]
-        visited = set()
-        visited.add(i)
+        visited = {i}
         parents = {i: None}
         while queue:
             node = queue.pop(0)

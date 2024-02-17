@@ -9,7 +9,7 @@ class BinaryTree: # Simple so no node as degree 2 other than root
         self.nodes = nodes #a dict of node name to val pairs
         self.edges = edges # a dict of node name to a list of neighbours (child name, edgeval)
         self.root = root #the name of the root
-        if self.root ==None:
+        if self.root is None:
             self.root = list(set(self.edges.keys()) - set(self.nodes.keys()))[0]
             self.nodes[self.root] = val
 
@@ -20,7 +20,7 @@ class BinaryTree: # Simple so no node as degree 2 other than root
 
         if node == "ROOT":
             return self.leaves(self.root)
-        if node==None:
+        if node is None:
             return []
         if self.is_leaf(node):
             return [node]
@@ -51,10 +51,9 @@ class BinaryTree: # Simple so no node as degree 2 other than root
             return self.edgecost(self.root)
         if self.is_leaf(node):
             return 0
-        else:
-            ln,lw = self.left(node)
-            rn,rw = self.right(node)
-            return lw+rw+self.edgecost(ln)+self.edgecost(rn)
+        ln,lw = self.left(node)
+        rn,rw = self.right(node)
+        return lw+rw+self.edgecost(ln)+self.edgecost(rn)
 
     def copy(self):
         return BinaryTree(copy.deepcopy(self.nodes),copy.deepcopy(self.edges),self.root,self.nodes[self.root])
@@ -74,10 +73,10 @@ class BinaryTree: # Simple so no node as degree 2 other than root
                 weight1 = edge1[1]
                 for edge2 in other.edges[f]:
                     t2 = edge2[0]
-                    weight2= edge2[1]
                     if t1==t2:
+                        weight2= edge2[1]
                         final_edges[f].append((t1,fe(weight1,weight2)))
-                        
+
         self.edges = final_edges
         return self
 

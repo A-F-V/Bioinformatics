@@ -19,9 +19,10 @@ class SuffixArray:
     def find_matching_pattern(self, pattern):
         def comparer(x):
             return 0 if prefix_pattern_match(x, pattern) else (-1 if x < pattern else 1)
+
         searcher = BinarySearch(0, len(self.indices)-1, comparer, emitter=self.suffix)
         frm, to = searcher.search(first=True), searcher.search(first=False)
-        if frm == None or to == None:
+        if frm is None or to is None:
             return []
         print((frm, to))
         output = [self.indices[i] for i in range(frm, to+1)]

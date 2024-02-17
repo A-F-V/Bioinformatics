@@ -35,12 +35,12 @@ def trace_pointers_needleman(graph): #just goes for diagonal then insert then de
             o2 = graph.s2[c-1]+o2
             pointer = (r-1,c-1)
         elif p>=2:
-            o1 = "-"+o1
+            o1 = f"-{o1}"
             o2 = graph.s2[c-1]+o2
             pointer = (r,c-1)
         elif p==1:
             o1 = graph.s1[r-1]+o1
-            o2 = "-"+o2
+            o2 = f"-{o2}"
             pointer = (r-1,c)
         else:
             print("ERROR")

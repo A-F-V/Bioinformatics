@@ -8,22 +8,11 @@ def bwt(text, s_array=None):
     :param s_array: suffix array
     :return: BWT of text
     """
-    # bwt = ""
-    # for i in s_array:
-    #    bwt += text[i]
-    # return bwt
-    if s_array is None:
-        c_rot = [text[i:] + text[:i] for i in range(len(text))]
-        c_rot = sorted(c_rot)
-        return "".join(map(lambda x: x[-1], c_rot))
-    else:
-        output = ""
-        for s_i in s_array:
-            if s_i == 0:
-                output += text[-1]
-            else:
-                output += text[s_i-1]
-        return output
+    if s_array is not None:
+        return "".join(text[-1] if s_i == 0 else text[s_i-1] for s_i in s_array)
+    c_rot = [text[i:] + text[:i] for i in range(len(text))]
+    c_rot = sorted(c_rot)
+    return "".join(map(lambda x: x[-1], c_rot))
 
 
 def number_letters(text):
@@ -104,7 +93,7 @@ def bwt_matching(first_col, last_col, pattern, ltf_mapping):  # O(n^2) but can b
 def bwt_matching_all(bwt, patterns):
     f_col, l_col = number_letters(first_col_from_bwt(bwt)), number_letters(bwt)
     ltf_mapping = last_to_first_mapping(bwt)
-    matches = []
-    for pattern in patterns:
-        matches.append(bwt_matching(f_col, l_col, pattern, ltf_mapping))
-    return matches
+    return [
+        bwt_matching(f_col, l_col, pattern, ltf_mapping)
+        for pattern in patterns
+    ]

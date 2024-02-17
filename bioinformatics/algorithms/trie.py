@@ -39,10 +39,9 @@ class Trie:
         path = [end_node]
         while path[0] != self.root:
             path.insert(0, self.parent[path[0]])
-        word = ""
-        for i in range(len(path) - 1):
-            word += self.edge_values[(path[i], path[i + 1])]
-        return word
+        return "".join(
+            self.edge_values[(path[i], path[i + 1])] for i in range(len(path) - 1)
+        )
 
     def prefix_match(self, word):
         """
@@ -98,7 +97,7 @@ class Trie:
             for edge in list(self.edges[start]):
                 char = edge[1]
                 stack.append([(start, char)])
-            while len(stack) > 0:
+            while stack:
                 path = stack.pop()
                 char = path[-1][1]
                 last_node = path[-1][0]
@@ -183,13 +182,13 @@ class SuffixTree(Trie):
         def long_path(node, pre_text):
             if self.node_is_leaf(node):
                 return ""
-            else:
-                best = pre_text
-                for next_node, text in self.edges[node]:
-                    attempt = long_path(next_node, pre_text + text)
-                    if len(attempt) > len(best):
-                        best = attempt
-                return best
+            best = pre_text
+            for next_node, text in self.edges[node]:
+                attempt = long_path(next_node, pre_text + text)
+                if len(attempt) > len(best):
+                    best = attempt
+            return best
+
         return long_path(self.root, "")
 
     def longest_substring_match(self, text):
@@ -243,7 +242,7 @@ class SuffixTree(Trie):
 
         def rec(node, text, append_text=""):
             if self.node_is_leaf(node):
-                return append_text+"(M)"
+                return f"{append_text}(M)"
             for next_node, ref_text in self.edges[node]:
                 matched_text, text_left = match(ref_text, text)
                 if len(matched_text) == 0:
@@ -255,11 +254,12 @@ class SuffixTree(Trie):
                     return append_text+matched_text+text[len(matched_text)]
                 return rec(next_node, text_left, append_text+matched_text)
             return append_text+text[0]
+
         return rec(self.root, text)
 
 
 def create_trie(words):
-    nodes = set([0])
+    nodes = {0}
     root = 0
     edges = {}
     nextNode = 1
@@ -284,11 +284,7 @@ def match_text_to_patterns(text, patterns):
     Returns all indices where the text matches a pattern
     """
     trie = create_trie(patterns)
-    matches = []
-    for i in range(len(text)):
-        if len(trie.prefix_match(text[i:])) != 0:
-            matches.append(i)
-    return matches
+    return [i for i in range(len(text)) if len(trie.prefix_match(text[i:])) != 0]
 
 
 def create_suffix_trie(text, has_dollar=True):

@@ -15,13 +15,13 @@ class BinarySearch:
                 left = mid + 1
             elif comp_val > 0:
                 right = mid
-            else:
-                if first:
-                    if mid == self.start or self.comparer(self.emitter(mid-1)) != 0:
-                        return mid
-                    right = mid
+            elif first:
+                if mid == self.start or self.comparer(self.emitter(mid-1)) != 0:
+                    return mid
                 else:
-                    if mid == self.end or self.comparer(self.emitter(mid+1)) != 0:
-                        return mid
-                    left = mid
+                    right = mid
+            elif mid == self.end or self.comparer(self.emitter(mid+1)) != 0:
+                return mid
+            else:
+                left = mid
         return left if self.comparer(self.emitter(left)) == 0 else None

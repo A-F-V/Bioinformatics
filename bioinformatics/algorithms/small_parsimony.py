@@ -27,7 +27,6 @@ class SmallParsimonyChar:
             return self.s[v][k]
         if self.is_leaf(v):
             self.s[v] = {c:(inf if c!=self.leaves[v] else 0) for c in self.charSet}
-            return self.s[v][k]
         else:
             best_dscore,best_sscore,best_dkv,best_skv = inf,inf,None,None
             for i in self.charSet:
@@ -44,23 +43,23 @@ class SmallParsimonyChar:
                 self.s[v] = {}
             self.s[v][k] = best_dscore+best_sscore
             self.optimal_tv[(v,k)] = (best_dkv,best_skv)
-            return self.s[v][k]
+
+        return self.s[v][k]
 
     def best_k(self,node):
         if self.is_leaf(node):
             return self.leaves[node]
-        else:
-            bestscore = inf
-            bestk = None
-            for k in self.charSet:
-                score = self.dp_tree_char_scores(k,node)
-                if score<bestscore:
-                    bestscore = score
-                    bestk = k
-            return bestk
+        bestscore = inf
+        bestk = None
+        for k in self.charSet:
+            score = self.dp_tree_char_scores(k,node)
+            if score<bestscore:
+                bestscore = score
+                bestk = k
+        return bestk
 
     def small_parsimony_tree(self,root=None,k=None):
-        if root==None:
+        if root is None:
             root = self.tree.root
             k = self.best_k(root)
             return self.small_parsimony_tree(root,k)

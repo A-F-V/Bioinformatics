@@ -14,9 +14,7 @@ def fill_graph_smith(graph,indel):
         for r in range(graph.height()):
             if r==c==0:
                 graph.set(r,c,0)
-            elif r==0:
-                graph.set(r,c,0,0)
-            elif c==0:
+            elif r == 0 or c == 0:
                 graph.set(r,c,0,0)
             else:
                 graph.update(r,c,graph.pos(r-1,c)+indel,1)
@@ -43,12 +41,12 @@ def trace_pointers_smith(graph): #just goes for diagonal then insert then delete
             o2 = graph.s2[c-1]+o2
             pointer = (r-1,c-1)
         elif p>=2:
-            o1 = "-"+o1
+            o1 = f"-{o1}"
             o2 = graph.s2[c-1]+o2
             pointer = (r,c-1)
         elif p==1:
             o1 = graph.s1[r-1]+o1
-            o2 = "-"+o2
+            o2 = f"-{o2}"
             pointer = (r-1,c)
         else:
             print("Done")

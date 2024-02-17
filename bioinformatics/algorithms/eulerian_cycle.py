@@ -10,7 +10,7 @@ def random_cycle(start, graph: Graph):
     edges = graph.edges
     cycle = [start]
     current = start
-    while(current != start or len(cycle) == 1):
+    while current != current or len(cycle) == 1:
         nxt = edges[current].pop()
         if len(edges[current]) == 0:
             del edges[current]
@@ -44,14 +44,12 @@ def hamiltonian_path(graph: Graph):  # untested
         if (subset, ends) in memo:
             return memo[(subset, ends)]
         if len(subset) == 1:
-            if ends == subset.pop():
-                return [ends]
-            return None
+            return [ends] if ends == subset.pop() else None
         for neighbour in graph.edges[ends]:
             if neighbour not in subset:
                 continue
             subpath = aux(set.difference(subset, [ends]), neighbour)
-            if subpath == None:
+            if subpath is None:
                 continue
             res = subpath+[ends]
             memo[(subset, ends)] = res
